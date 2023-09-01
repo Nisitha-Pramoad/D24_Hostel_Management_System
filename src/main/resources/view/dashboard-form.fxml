@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.D24_Hostel_Management_System.controller.DashboardFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.DashboardFormController">
+   <children>
+      <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
+         <children>
+            <ImageView fitHeight="702.0" fitWidth="745.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/Vector%201.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="82.0" fitWidth="98.0" layoutX="72.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="103.0" layoutY="174.0" text="31 Auguest 2023" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans Regular" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="110.0" layoutY="203.0" text="16:04" textFill="WHITE">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgStudent" fitHeight="130.0" fitWidth="135.0" layoutX="392.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/student.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgRoom" fitHeight="130.0" fitWidth="135.0" layoutX="564.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/roomicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgPayment" fitHeight="130.0" fitWidth="135.0" layoutX="735.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/payment.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSummery" fitHeight="130.0" fitWidth="135.0" layoutX="905.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/summeryicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSettting" fitHeight="130.0" fitWidth="135.0" layoutX="1078.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/settingiocon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="1212.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/dashboard/exiticon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
