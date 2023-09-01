@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="873.0" fitWidth="1308.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/welcomePage.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#212229" height="703.0" layoutX="653.0" stroke="#212229" strokeType="INSIDE" width="654.0" />
+      <Text fill="WHITE" layoutX="831.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in">
+         <font>
+            <Font name="Open Sans Bold" size="34.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="834.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your login details below." />
+      <TextField fx:id="txtUsername" layoutX="831.0" layoutY="292.0" prefHeight="35.0" prefWidth="312.0" />
+      <Text fill="WHITE" layoutX="831.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <Text fill="WHITE" layoutX="831.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <JFXCheckBox fx:id="chkbxRememberMe" checkedColor="#2380ea" layoutX="831.0" layoutY="450.0" text="Remember me" textFill="WHITE" unCheckedColor="WHITE" />
+      <JFXButton layoutX="831.0" layoutY="500.0" onAction="#btnLogInOnAction" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: #2380EA;" text="Log In" textFill="WHITE" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="239.0" layoutY="280.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblForgotYourPassword" layoutX="994.0" layoutY="403.0" text="Forgot your password?" textFill="WHITE" />
+      <PasswordField fx:id="txtPassword" layoutX="831.0" layoutY="364.0" prefHeight="35.0" prefWidth="312.0" />
+   </children>
+</AnchorPane>
