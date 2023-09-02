@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.DashboardFormController">
+<AnchorPane fx:id="root" prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.DashboardFormController">
    <children>
       <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
          <children>
@@ -32,27 +31,27 @@
                   <Font size="40.0" />
                </font>
             </Label>
-            <ImageView fx:id="imgStudent" fitHeight="130.0" fitWidth="135.0" layoutX="392.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgStudent" fitHeight="130.0" fitWidth="135.0" layoutX="392.0" layoutY="292.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/dashboard/student.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgRoom" fitHeight="130.0" fitWidth="135.0" layoutX="564.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgRoom" fitHeight="130.0" fitWidth="135.0" layoutX="564.0" layoutY="292.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/dashboard/roomicon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgPayment" fitHeight="130.0" fitWidth="135.0" layoutX="735.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgPayment" fitHeight="130.0" fitWidth="135.0" layoutX="735.0" layoutY="292.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/dashboard/payment.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgSummery" fitHeight="130.0" fitWidth="135.0" layoutX="905.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSummery" fitHeight="130.0" fitWidth="135.0" layoutX="905.0" layoutY="292.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/dashboard/summeryicon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgSettting" fitHeight="130.0" fitWidth="135.0" layoutX="1078.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSettting" fitHeight="130.0" fitWidth="135.0" layoutX="1078.0" layoutY="292.0" onMouseClicked="#navigate" onMouseEntered="#playMouseEnterAnimation" onMouseExited="#playMouseExitAnimation" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/dashboard/settingiocon.png" />
                </image>
