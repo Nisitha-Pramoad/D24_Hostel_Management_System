@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.D24_Hostel_Management_System.controller.SummeryFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.SummeryFormController">
+   <children>
+      <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
+         <children>
+            <Pane layoutX="172.0" layoutY="136.0" prefHeight="132.0" prefWidth="200.0" style="-fx-background-color: #252934; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="16.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/payment/Group%2094.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="82.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="available rooms">
+                     <font>
+                        <Font name="Open Sans Regular" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="77.0" layoutY="40.0" text="126" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <LineChart layoutX="150.0" layoutY="350.0" prefHeight="322.0" prefWidth="992.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Pane layoutX="426.0" layoutY="136.0" prefHeight="132.0" prefWidth="200.0" style="-fx-background-color: #252934; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="15.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/payment/Group%2095.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="81.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="available rooms">
+                     <font>
+                        <Font name="Open Sans Regular" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="76.0" layoutY="36.0" text="126" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="676.0" layoutY="136.0" prefHeight="132.0" prefWidth="200.0" style="-fx-background-color: #252934; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="17.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/payment/Group%2096.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="83.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="available rooms">
+                     <font>
+                        <Font name="Open Sans Regular" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="78.0" layoutY="39.0" text="126" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="930.0" layoutY="136.0" prefHeight="132.0" prefWidth="200.0" style="-fx-background-color: #252934; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="16.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/payment/Group%2097.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="82.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="available rooms">
+                     <font>
+                        <Font name="Open Sans Regular" size="13.0" />
+                     </font>
+                  </Text>
+                  <Label layoutX="77.0" layoutY="40.0" text="126" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXButton layoutX="84.0" layoutY="42.0" prefHeight="42.0" prefWidth="48.0">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/images/icon-arrow-left-circle.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="1.0" />
+               </font>
+            </JFXButton>
+            <Text fill="WHITE" layoutX="195.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total revenue">
+               <font>
+                  <Font name="Open Sans Regular" size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>

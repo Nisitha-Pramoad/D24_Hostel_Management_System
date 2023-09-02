@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.D24_Hostel_Management_System.controller.RoomFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.RoomFormController">
+   <children>
+      <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
+         <children>
+            <Text fill="WHITE" layoutX="104.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration">
+               <font>
+                  <Font name="Open Sans Bold" size="19.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/icon-arrow-left-circle.png" />
+               </image>
+            </ImageView>
+            <TextField layoutX="48.0" layoutY="128.0" prefHeight="22.0" prefWidth="233.0" promptText="Rm-1324">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="48.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Id" />
+            <Text fill="WHITE" layoutX="377.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" />
+            <TextField layoutX="678.0" layoutY="128.0" prefHeight="24.0" prefWidth="232.0" promptText="Include Price">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="678.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pricing" />
+            <TextField layoutX="48.0" layoutY="188.0" prefHeight="24.0" prefWidth="232.0" promptText="maximum occupants allowed">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="48.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum Occupancy" />
+            <TextField layoutX="377.0" layoutY="189.0" prefHeight="24.0" prefWidth="361.0" promptText="amenities and features available in the room">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="377.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amenities and Features" />
+            <TextField layoutX="981.0" layoutY="130.0" prefHeight="24.0" prefWidth="271.0" promptText="size of the room">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="981.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Size" />
+            <TextField layoutX="848.0" layoutY="189.0" prefHeight="24.0" prefWidth="405.0" promptText="description or additional details about the room">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="850.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Description" />
+            <Button layoutX="860.0" layoutY="247.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
+            <Button layoutX="1000.0" layoutY="247.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
+            <Button layoutX="1137.0" layoutY="247.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
+            <TableView layoutX="51.0" layoutY="317.0" prefHeight="368.0" prefWidth="1203.0">
+               <columns>
+                  <TableColumn prefWidth="131.0" text="C1" />
+                  <TableColumn prefWidth="137.0" text="C2" />
+                  <TableColumn prefWidth="131.0" text="C2" />
+                  <TableColumn prefWidth="113.0" text="C2" />
+                  <TableColumn prefWidth="125.0" text="C2" />
+                  <TableColumn prefWidth="121.0" text="C2" />
+                  <TableColumn prefWidth="195.0" text="C2" />
+                  <TableColumn prefWidth="131.0" text="C2" />
+                  <TableColumn prefWidth="118.0" text="C2" />
+               </columns>
+            </TableView>
+            <ComboBox layoutX="376.0" layoutY="126.0" prefHeight="24.0" prefWidth="212.0" promptText="Ac / Food" />
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
