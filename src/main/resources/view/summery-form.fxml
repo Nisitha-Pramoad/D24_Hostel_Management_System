@@ -100,9 +100,9 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton layoutX="84.0" layoutY="42.0" prefHeight="42.0" prefWidth="48.0">
+            <JFXButton layoutX="50.0" layoutY="28.0" prefHeight="42.0" prefWidth="48.0">
                <graphic>
-                  <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/images/icon-arrow-left-circle.png" />
                      </image>
@@ -119,5 +119,10 @@
             </Text>
          </children>
       </Pane>
+      <Text fill="WHITE" layoutX="104.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summery">
+         <font>
+            <Font name="Open Sans Bold" size="19.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

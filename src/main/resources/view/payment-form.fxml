@@ -12,12 +12,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.PaymentFormController">
    <children>
       <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
          <children>
-            <Text fill="WHITE" layoutX="104.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration">
+            <Text fill="WHITE" layoutX="104.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment">
                <font>
                   <Font name="Open Sans Bold" size="19.0" />
                </font>
