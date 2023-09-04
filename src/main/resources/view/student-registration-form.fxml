@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.StudentRegistrationFormController">
+<AnchorPane fx:id="root" prefHeight="703.0" prefWidth="1308.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.D24_Hostel_Management_System.controller.StudentRegistrationFormController">
    <children>
       <Pane prefHeight="703.0" prefWidth="1308.0" style="-fx-background-color: #212229;">
          <children>
@@ -23,7 +23,7 @@
                   <Font name="Open Sans Bold" size="19.0" />
                </font>
             </Text>
-            <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgHome" fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/icon-arrow-left-circle.png" />
                </image>
@@ -31,75 +31,72 @@
             <Pane layoutX="49.0" layoutY="101.0" prefHeight="71.0" prefWidth="1202.0" style="-fx-background-color: #272A34; -fx-background-radius: 10;">
                <children>
                   <Text fill="WHITE" layoutX="403.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
-                  <DatePicker layoutX="403.0" layoutY="30.0" prefHeight="24.0" prefWidth="189.0" promptText="13 Oct 2023" />
+                  <DatePicker fx:id="dtpkStartDate" layoutX="403.0" layoutY="30.0" prefHeight="24.0" prefWidth="189.0" promptText="13 Oct 2023" />
                   <Text fill="WHITE" layoutX="624.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To" />
-                  <DatePicker layoutX="623.0" layoutY="30.0" prefHeight="24.0" prefWidth="189.0" promptText="13 Nov 2023" />
-                  <Button layoutX="856.0" layoutY="30.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="189.0" style="-fx-background-color: #2380EA;" text="Available" textFill="WHITE" />
-                  <TextField layoutX="161.0" layoutY="30.0" prefHeight="24.0" prefWidth="189.0" promptText="select room type">
-                     <font>
-                        <Font size="11.0" />
-                     </font></TextField>
+                  <DatePicker fx:id="dtpkEndDate" layoutX="623.0" layoutY="30.0" prefHeight="24.0" prefWidth="189.0" promptText="13 Nov 2023" />
+                  <Button layoutX="856.0" layoutY="30.0" mnemonicParsing="false" onAction="#btnSearchAvailableOnAction" prefHeight="24.0" prefWidth="189.0" style="-fx-background-color: #2380EA;" text="Available" textFill="WHITE" />
                   <Text fill="WHITE" layoutX="161.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type" />
+                  <ComboBox fx:id="roomType" layoutX="161.0" layoutY="31.0" prefHeight="24.0" prefWidth="189.0" />
                </children>
             </Pane>
-            <TextField layoutX="48.0" layoutY="215.0" promptText="Enter student Id">
+            <TextField fx:id="txtStudentId" layoutX="48.0" layoutY="215.0" prefHeight="22.0" prefWidth="157.0" promptText="Enter student Id">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="48.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id" />
-            <TextField layoutX="256.0" layoutY="216.0" prefHeight="24.0" prefWidth="177.0" promptText="Enter student first name">
+            <TextField fx:id="txtFirstName" layoutX="256.0" layoutY="216.0" prefHeight="24.0" prefWidth="177.0" promptText="Enter student first name">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="256.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
-            <TextField layoutX="466.0" layoutY="216.0" prefHeight="24.0" prefWidth="177.0" promptText="Enter student last name">
+            <TextField fx:id="txtLastName" layoutX="466.0" layoutY="216.0" prefHeight="24.0" prefWidth="177.0" promptText="Enter student last name">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="466.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
             <Text fill="WHITE" layoutX="676.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth" />
-            <DatePicker layoutX="676.0" layoutY="216.0" promptText="13 Nov 2023" />
-            <TextField layoutX="48.0" layoutY="275.0" prefHeight="24.0" prefWidth="359.0" promptText="Enter student address">
+            <DatePicker fx:id="dtpkBirthday" layoutX="676.0" layoutY="216.0" promptText="13 Nov 2023" />
+            <TextField fx:id="txtAddress" layoutX="48.0" layoutY="275.0" prefHeight="24.0" prefWidth="231.0" promptText="Enter student address">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="48.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
-            <TextField layoutX="466.0" layoutY="276.0" prefHeight="24.0" prefWidth="177.0" promptText="Enter student contact no">
+            <TextField fx:id="txtEmail" layoutX="488.0" layoutY="276.0" prefHeight="24.0" prefWidth="160.0" promptText="Enter student email">
                <font>
                   <Font size="11.0" />
                </font></TextField>
-            <Text fill="WHITE" layoutX="466.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" />
-            <TextField layoutX="910.0" layoutY="217.0" prefHeight="24.0" prefWidth="150.0" promptText="Enter student national id">
+            <Text fill="WHITE" layoutX="488.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <TextField fx:id="txtNationalId" layoutX="910.0" layoutY="217.0" prefHeight="24.0" prefWidth="150.0" promptText="Enter student national id">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="910.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="National id" />
-            <TextField layoutX="677.0" layoutY="276.0" prefHeight="24.0" prefWidth="198.0" promptText="Enter student’s university name">
+            <TextField fx:id="txtCampus" layoutX="677.0" layoutY="276.0" prefHeight="24.0" prefWidth="198.0" promptText="Enter student’s university name">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="677.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Campus or university" />
             <Text fill="WHITE" layoutX="1108.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" />
-            <ComboBox layoutX="1103.0" layoutY="215.0" prefWidth="150.0" promptText="Male" />
-            <TextField layoutX="911.0" layoutY="276.0" prefHeight="24.0" prefWidth="149.0" promptText="Amount of key money">
+            <ComboBox fx:id="cmbGender" layoutX="1103.0" layoutY="215.0" prefWidth="150.0" />
+            <TextField fx:id="txtKeymoney" layoutX="911.0" layoutY="276.0" prefHeight="24.0" prefWidth="149.0" promptText="Amount of key money">
                <font>
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="911.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money" />
-            <Button layoutX="1105.0" layoutY="272.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #353747; -fx-background-radius: 10;" text="Choose Image" textFill="WHITE">
+            <Button layoutX="1105.0" layoutY="272.0" mnemonicParsing="false" onAction="#btnPhotoChooser" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #353747; -fx-background-radius: 10;" text="Choose Image" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font></Button>
             <Text fill="WHITE" layoutX="1111.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Photo" />
-            <CheckBox layoutX="51.0" layoutY="334.0" mnemonicParsing="false" text="Student have read and agree to the Hostel Terms and Conditions." textFill="WHITE" />
-            <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="512.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+            <CheckBox fx:id="chckbxTermsAndCondition" layoutX="51.0" layoutY="334.0" mnemonicParsing="false" text="Student have read and agree to the Hostel Terms and Conditions." textFill="WHITE" />
+            <ImageView fx:id="imgStudentsDetailsPage" fitHeight="26.0" fitWidth="27.0" layoutX="512.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/icon-info.png" />
                </image>
             </ImageView>
-            <Button layoutX="860.0" layoutY="326.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
-            <Button layoutX="1000.0" layoutY="326.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
-            <Button layoutX="1137.0" layoutY="326.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
+            <Button layoutX="860.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
+            <Button layoutX="1000.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
+            <Button layoutX="1137.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
             <TableView layoutX="51.0" layoutY="389.0" prefHeight="296.0" prefWidth="1203.0">
               <columns>
                 <TableColumn prefWidth="131.0" text="C1" />
@@ -113,6 +110,12 @@
                   <TableColumn prefWidth="118.0" text="C2" />
               </columns>
             </TableView>
+            <TextField fx:id="txtContact" layoutX="310.0" layoutY="276.0" prefHeight="24.0" prefWidth="149.0" promptText="Enter student contact no">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Text fill="WHITE" layoutX="310.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" />
          </children>
       </Pane>
    </children>
