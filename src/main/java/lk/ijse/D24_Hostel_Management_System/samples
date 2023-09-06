@@ -1,0 +1,21 @@
+public String getGenerateStudentId() {
+        try {
+            // Fetch the maximum student ID from the database
+            Query<String> query = session.createQuery("SELECT MAX(studentId) FROM Student", String.class);
+            List<String> result = query.getResultList();
+            String maxStudentId = result.get(0);
+
+            // Increment the numeric part of the student ID
+            int numericPart = Integer.parseInt(maxStudentId.substring(1)); // Extract numeric part
+            numericPart++; // Increment
+            String newNumericPart = String.format("%04d", numericPart); // Format to 4 digits
+
+            return "S" + newNumericPart;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to generate student ID");
+        }
+    }
+
+
+/////////////////////////////

@@ -97,17 +97,20 @@
             <Button layoutX="860.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
             <Button layoutX="1000.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
             <Button layoutX="1137.0" layoutY="326.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
-            <TableView layoutX="51.0" layoutY="389.0" prefHeight="296.0" prefWidth="1203.0">
+            <TableView fx:id="tblStudents" layoutX="51.0" layoutY="389.0" prefHeight="296.0" prefWidth="1203.0">
               <columns>
-                <TableColumn prefWidth="131.0" text="C1" />
-                <TableColumn prefWidth="137.0" text="C2" />
-                  <TableColumn prefWidth="131.0" text="C2" />
-                  <TableColumn prefWidth="113.0" text="C2" />
-                  <TableColumn prefWidth="125.0" text="C2" />
-                  <TableColumn prefWidth="121.0" text="C2" />
-                  <TableColumn prefWidth="195.0" text="C2" />
-                  <TableColumn prefWidth="131.0" text="C2" />
-                  <TableColumn prefWidth="118.0" text="C2" />
+                <TableColumn prefWidth="87.33333587646484" text="Id" />
+                <TableColumn prefWidth="84.0" text="FName" />
+                  <TableColumn prefWidth="84.33334350585938" text="LName" />
+                  <TableColumn prefWidth="74.66665649414062" text="Dob" />
+                  <TableColumn prefWidth="129.33334350585938" text="NId" />
+                  <TableColumn prefWidth="83.66668701171875" text="Gender" />
+                  <TableColumn prefWidth="145.33331298828125" text="Address" />
+                  <TableColumn prefWidth="110.66668701171875" text="Contact" />
+                  <TableColumn prefWidth="104.33331298828125" text="Email" />
+                  <TableColumn prefWidth="98.6666259765625" text="Campus" />
+                  <TableColumn prefWidth="95.6666259765625" text="KeyMoney" />
+                  <TableColumn prefWidth="102.3333740234375" text="Conditions" />
               </columns>
             </TableView>
             <TextField fx:id="txtContact" layoutX="310.0" layoutY="276.0" prefHeight="24.0" prefWidth="149.0" promptText="Enter student contact no">
