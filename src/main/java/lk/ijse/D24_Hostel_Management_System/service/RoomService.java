@@ -7,6 +7,8 @@ public interface RoomService {
 
     String saveRoom(RoomDto roomDto);
 
+    String updateRoom(RoomDto roomDto);
+
 
     String getGenerateRoomId();
 }

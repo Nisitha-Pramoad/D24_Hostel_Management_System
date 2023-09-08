@@ -105,7 +105,16 @@ public class RoomFormController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        RoomDto roomDto = getRoom();
 
+        RoomService roomService = new RoomServiceImpl().getInstance();
+        String isSavedRoomtId = roomService.updateRoom(roomDto);
+
+        if (isSavedRoomtId != null) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Room updated successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Failed to updated room. Please try again.").show();
+        }
     }
 
     public RoomDto getRoom(){

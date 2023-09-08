@@ -41,8 +41,8 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public void update(Student entity) {
-
+    public String update(Student entity) {
+        return null;
     }
 
     @Override
