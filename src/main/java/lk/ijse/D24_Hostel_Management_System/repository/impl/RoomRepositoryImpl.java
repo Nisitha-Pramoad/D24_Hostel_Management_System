@@ -31,8 +31,9 @@ public class RoomRepositoryImpl implements RoomRepository {
     }
 
     @Override
-    public String update(Room room) {
-        return (String) session.save(room);
+    public boolean update(Room room) {
+        //return (String) session.save(room);
+        return false;
     }
 
 

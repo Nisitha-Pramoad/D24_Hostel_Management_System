@@ -121,10 +121,11 @@ public class RoomFormController implements Initializable {
         RoomDto roomDto = getRoom();
 
         RoomService roomService = new RoomServiceImpl().getInstance();
-        String isUpdatRoomId = roomService.updateRoom(roomDto);
+        boolean isUpdatRoomId = roomService.updateRoom(roomDto);
 
-        if (isUpdatRoomId != null) {
+        if (isUpdatRoomId) {
             new Alert(Alert.AlertType.CONFIRMATION, "Room updated successfully!").show();
+            //clearFields(); // Optionally, clear the input fields after deletion
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to updated room. Please try again.").show();
         }

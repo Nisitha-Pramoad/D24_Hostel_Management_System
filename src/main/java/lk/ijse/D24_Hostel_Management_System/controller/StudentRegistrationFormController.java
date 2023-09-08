@@ -17,8 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.D24_Hostel_Management_System.dto.StudentDto;
 import lk.ijse.D24_Hostel_Management_System.embedded.NameIdentifier;
-import lk.ijse.D24_Hostel_Management_System.entity.Student;
-import lk.ijse.D24_Hostel_Management_System.repository.impl.StudentRepositoryImpl;
 import lk.ijse.D24_Hostel_Management_System.service.StudentService;
 import lk.ijse.D24_Hostel_Management_System.service.impl.StudentServiceImpl;
 import lk.ijse.D24_Hostel_Management_System.tdm.StudentTM;
@@ -26,13 +24,51 @@ import lk.ijse.D24_Hostel_Management_System.tdm.StudentTM;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class StudentRegistrationFormController implements Initializable {
 
     @FXML
     public TableView<StudentTM> tblStudents;
+
+    @FXML
+    private TableColumn<StudentTM, String> Conditions;
+
+    @FXML
+    private TableColumn<StudentTM, String> colAddress;
+
+    @FXML
+    private TableColumn<StudentTM, String> colCampus;
+
+    @FXML
+    private TableColumn<StudentTM, String> colContact;
+
+    @FXML
+    private TableColumn<StudentTM, String> colDob;
+
+    @FXML
+    private TableColumn<StudentTM, String> colEmail;
+
+    @FXML
+    private TableColumn<StudentTM, String> colFName;
+
+    @FXML
+    private TableColumn<StudentTM, String> colGender;
+
+    @FXML
+    private TableColumn<StudentTM, String> colId;
+
+    @FXML
+    private TableColumn<StudentTM, String> colKeyMoney;
+
+    @FXML
+    private TableColumn<StudentTM, String> colLName;
+
+    @FXML
+    private TableColumn<StudentTM, String> colNId;
 
     @FXML
     private CheckBox chckbxTermsAndCondition;
@@ -96,21 +132,20 @@ public class StudentRegistrationFormController implements Initializable {
         );
         cmbGender.setItems(genderTypeList);
 
-        tblStudents.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        tblStudents.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("nameIdentifier"));
-        tblStudents.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-        tblStudents.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("nationalId"));
-        tblStudents.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("gender"));
-        tblStudents.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("address"));
-        tblStudents.getColumns().get(8).setCellValueFactory(new PropertyValueFactory<>("contact"));
-        tblStudents.getColumns().get(6).setCellValueFactory(new PropertyValueFactory<>("email"));
-        tblStudents.getColumns().get(7).setCellValueFactory(new PropertyValueFactory<>("campusName"));
-        tblStudents.getColumns().get(10).setCellValueFactory(new PropertyValueFactory<>("keymoney"));
-        tblStudents.getColumns().get(9).setCellValueFactory(new PropertyValueFactory<>("acceptCondions"));
-        tblStudents.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("createdDateTime"));
+        Conditions.setCellValueFactory(new PropertyValueFactory<>("acceptConditions"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCampus.setCellValueFactory(new PropertyValueFactory<>("campusName"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        colDob.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colFName.setCellValueFactory(new PropertyValueFactory<>("nameIdentifierFirstName"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keymoney"));
+        colLName.setCellValueFactory(new PropertyValueFactory<>("nameIdentifierLastName"));
+        colNId.setCellValueFactory(new PropertyValueFactory<>("nationalId"));
 
         tblStudents.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-
             if (newValue != null) {
                 txtStudentId.setText(newValue.getStudentId());
                 txtFirstName.setText(newValue.getNameIdentifier().getFirstName());
@@ -123,48 +158,76 @@ public class StudentRegistrationFormController implements Initializable {
                 txtEmail.setText(newValue.getEmail());
                 txtCampus.setText(newValue.getCampusName());
                 double keyMoneyValue = newValue.getKeymoney();
-                String formattedKeyMoney = String.format("%.2f", keyMoneyValue); // Format as a decimal with 2 decimal places
+                String formattedKeyMoney = String.format("%.2f", keyMoneyValue);
                 txtKeymoney.setText(formattedKeyMoney);
-                chckbxTermsAndCondition.setSelected(newValue.isAcceptCondions());
-
-
-                /*txtStudentId.setDisable(false);
-                txtFirstName.setDisable(false);
-                txtLastName.setDisable(false);*/
-                loadAllCustomers();
+                chckbxTermsAndCondition.setSelected(newValue.isAcceptConditions());
             }
         });
 
-        //set new sid
-        //txtStudentId.setText(getNewStudentId());
-        //loadAllCustomers();
+        loadAllCustomers();
     }
+
 
     private void loadAllCustomers() {
-        /*tblStudents.getItems().clear();
-        *//*Get all customers*//*
-
         try {
-            // Fetch student data from your StudentRepository
-            StudentRepositoryImpl studentRepositoryImpl = new StudentRepositoryImpl();
-            List<StudentTM> studentList = studentRepositoryImpl.getAllStudents(); // Implement this method in StudentRepository
+            StudentService studentService = new StudentServiceImpl().getInstance();
+            List<StudentDto> studentList = studentService.getAllStudents();
 
-            *//*for (StudentTM s : studentList) {
-                tblStudents.getItems().add(new StudentTM(s.getStudentId(), s.getNameIdentifier(), s.getDateOfBirth(), s.getNationalId(),
-                        s.getGender(), s.getAddress(), s.getContact(), s.getEmail(), s.getCampusName(), s.getKeymoney(),
-                        s.isAcceptCondions()));
-            }*//*
+            ObservableList<StudentTM> observableStudentList = FXCollections.observableArrayList(convertToStudentTMList(studentList));
 
-            // Convert the list to an ObservableList for use with TableView
-            ObservableList<StudentTM> observableStudentList = FXCollections.observableArrayList(studentList);
-
-            // Set the table's data source to the observable list
             tblStudents.setItems(observableStudentList);
 
+            // Print the loaded students to the console
+            for (StudentDto student : studentList) {
+                System.out.println("Student ID: " + student.getStudentId());
+                System.out.println("Name: " + student.getNameIdentifier().getFirstName() + " " + student.getNameIdentifier().getLastName());
+                System.out.println("Date of Birth: " + student.getDateOfBirth());
+                System.out.println("National ID: " + student.getNationalId());
+                System.out.println("Gender: " + student.getGender());
+                System.out.println("Address: " + student.getAddress());
+                System.out.println("Contact: " + student.getContact());
+                System.out.println("Email: " + student.getEmail());
+                System.out.println("Campus: " + student.getCampusName());
+                System.out.println("Key Money: " + student.getKeymoney());
+                System.out.println("Accepted Conditions: " + student.isAcceptCondions());
+                System.out.println("Created Date Time: " + student.getCreatedDateTime());
+                System.out.println("----------------------------------");
+            }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }*/
+            new Alert(Alert.AlertType.ERROR, "Failed to load students: " + e.getMessage()).show();
+        }
     }
+
+
+    // Helper method to convert StudentDto objects to StudentTM objects
+    private List<StudentTM> convertToStudentTMList(List<StudentDto> studentDtoList) {
+        List<StudentTM> studentTMList = new ArrayList<>();
+        for (StudentDto studentDto : studentDtoList) {
+            StudentTM studentTM = new StudentTM();
+            studentTM.setStudentId(studentDto.getStudentId());
+
+            NameIdentifier nameIdentifier = studentDto.getNameIdentifier();
+            if (nameIdentifier != null) {
+                studentTM.setNameIdentifier(nameIdentifier);
+            }
+
+            studentTM.setDateOfBirth(studentDto.getDateOfBirth());
+            studentTM.setNationalId(studentDto.getNationalId());
+            studentTM.setGender(studentDto.getGender());
+            studentTM.setAddress(studentDto.getAddress());
+            studentTM.setContact(studentDto.getContact());
+            studentTM.setEmail(studentDto.getEmail());
+            studentTM.setCampusName(studentDto.getCampusName());
+            studentTM.setKeymoney(studentDto.getKeymoney());
+            studentTM.setAcceptConditions(studentDto.isAcceptCondions());
+            studentTM.setCreatedDateTime(studentDto.getCreatedDateTime());
+
+            studentTMList.add(studentTM);
+        }
+        return studentTMList;
+    }
+
+
 
     @FXML
     void navigateToHome(MouseEvent event) throws IOException {
@@ -185,6 +248,7 @@ public class StudentRegistrationFormController implements Initializable {
         String isSavedStudentId = studentService.saveStudent(student);
 
         if (isSavedStudentId != null) {
+            loadAllCustomers();
             new Alert(Alert.AlertType.CONFIRMATION, "Student saved successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to save student. Please try again.").show();
@@ -193,26 +257,61 @@ public class StudentRegistrationFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        StudentTM selectedStudent = tblStudents.getSelectionModel().getSelectedItem();
 
+        if (selectedStudent == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select a student to delete.").show();
+            return;
+        }
+
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmationAlert.setHeaderText("Confirm Deletion");
+        confirmationAlert.setContentText("Are you sure you want to delete this student?");
+        Optional<ButtonType> result = confirmationAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            String studentId = selectedStudent.getStudentId();
+
+            StudentService studentService = new StudentServiceImpl().getInstance();
+            boolean isDeleted = studentService.deleteStudent(studentId);
+
+            if (isDeleted) {
+                loadAllCustomers();
+                new Alert(Alert.AlertType.CONFIRMATION, "Student deleted successfully!").show();
+                loadAllCustomers();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete student. Please try again.").show();
+            }
+        }
     }
 
     @FXML
     void btnSearchAvailableOnAction(ActionEvent event) {
-
+        // Implement search logic here
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        StudentDto studentDto = getStudent();
 
+        StudentService studentService = new StudentServiceImpl().getInstance();
+        boolean isUpdated = studentService.updateStudent(studentDto);
+
+        if (isUpdated) {
+            loadAllCustomers();
+            new Alert(Alert.AlertType.CONFIRMATION, "Student updated successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Failed to update student. Please try again.").show();
+        }
     }
 
     private StudentDto getStudent() {
         String studentId = txtStudentId.getText();
         String dateOfBirth = String.valueOf(dtpkBirthday.getValue());
         String nationalId = txtNationalId.getText();
-        String Gender = cmbGender.getValue();
+        String gender = cmbGender.getValue();
         String address = txtAddress.getText();
-        String contact = txtAddress.getText();
+        String contact = txtContact.getText();
         String email = txtEmail.getText();
         String campusName = txtCampus.getText();
         double keyMoney = Double.parseDouble(txtKeymoney.getText());
@@ -226,7 +325,7 @@ public class StudentRegistrationFormController implements Initializable {
 
         student.setDateOfBirth(LocalDate.parse(dateOfBirth));
         student.setNationalId(nationalId);
-        student.setGender(Gender);
+        student.setGender(gender);
         student.setAddress(address);
         student.setContact(contact);
         student.setEmail(email);
@@ -237,7 +336,7 @@ public class StudentRegistrationFormController implements Initializable {
         return student;
     }
 
-    private NameIdentifier getNameIdentifier(){
+    private NameIdentifier getNameIdentifier() {
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
 
@@ -247,17 +346,4 @@ public class StudentRegistrationFormController implements Initializable {
 
         return nameIdentifier;
     }
-
-    private String getNewStudentId() {
-        try {
-            // Fetch the new student ID from the service
-            StudentService studentService = new StudentServiceImpl().getInstance();
-            return studentService.getGenerateStudentId();
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to generate student ID").show();
-            return null; // Handle the error as needed
-        }
-    }
-
 }

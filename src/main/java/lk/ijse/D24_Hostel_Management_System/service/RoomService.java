@@ -7,7 +7,7 @@ public interface RoomService {
 
     String saveRoom(RoomDto roomDto);
 
-    String updateRoom(RoomDto roomDto);
+    boolean updateRoom(RoomDto roomDto);
 
     boolean deleteRoom(String roomId);
 

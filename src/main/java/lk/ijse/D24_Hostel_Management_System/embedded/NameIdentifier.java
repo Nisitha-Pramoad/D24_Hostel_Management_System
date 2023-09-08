@@ -33,10 +33,8 @@ public class NameIdentifier {
     }
 
     public String getFullName() {
-        // Combine the first name, middle name (if available), and last name
-        StringBuilder fullName = new StringBuilder(firstName);
-        fullName.append(" ").append(lastName);
-        return fullName.toString();
+        // Combine the first name and last name
+        return firstName + " " + lastName;
     }
 
     @Override

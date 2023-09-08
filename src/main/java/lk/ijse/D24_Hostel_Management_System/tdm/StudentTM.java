@@ -6,36 +6,22 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
-public class StudentTM implements Comparable<StudentTM>{
+public class StudentTM implements Comparable<StudentTM> {
 
-    //String
     private String studentId;
-
     private NameIdentifier nameIdentifier;
-
     private LocalDate dateOfBirth;
-
     private String nationalId;
-
     private String gender;
-
     private String address;
-
     private String contact;
-
     private String email;
-
     private String campusName;
-
     private double keymoney;
-
     private boolean acceptCondions;
-
     private Timestamp createdDateTime;
 
-    public StudentTM() {
-    }
-
+    // Constructor
     public StudentTM(String studentId, NameIdentifier nameIdentifier, LocalDate dateOfBirth, String nationalId, String gender, String address, String contact, String email, String campusName, double keymoney, boolean acceptCondions, Timestamp createdDateTime) {
         this.studentId = studentId;
         this.nameIdentifier = nameIdentifier;
@@ -51,9 +37,11 @@ public class StudentTM implements Comparable<StudentTM>{
         this.createdDateTime = createdDateTime;
     }
 
-    public StudentTM(String studentId, NameIdentifier nameIdentifier, LocalDate dateOfBirth, String nationalId, String gender, String address, String contact, String email, String campusName, double keymoney, boolean acceptCondions) {
+    public StudentTM() {
+
     }
 
+    // Getters and setters
     public String getStudentId() {
         return studentId;
     }
@@ -134,12 +122,12 @@ public class StudentTM implements Comparable<StudentTM>{
         this.keymoney = keymoney;
     }
 
-    public boolean isAcceptCondions() {
+    public boolean isAcceptConditions() {
         return acceptCondions;
     }
 
-    public void setAcceptCondions(boolean acceptCondions) {
-        this.acceptCondions = acceptCondions;
+    public void setAcceptConditions(boolean acceptConditions) {
+        this.acceptCondions = acceptConditions;
     }
 
     public Timestamp getCreatedDateTime() {
@@ -148,6 +136,23 @@ public class StudentTM implements Comparable<StudentTM>{
 
     public void setCreatedDateTime(Timestamp createdDateTime) {
         this.createdDateTime = createdDateTime;
+    }
+
+    // Additional getter methods for firstName and lastName
+    public String getFirstName() {
+        return nameIdentifier != null ? nameIdentifier.getFirstName() : null;
+    }
+
+    public String getLastName() {
+        return nameIdentifier != null ? nameIdentifier.getLastName() : null;
+    }
+
+    public String getNameIdentifierLastName() {
+        return nameIdentifier.getLastName();
+    }
+
+    public String getNameIdentifierFirstName() {
+        return nameIdentifier.getFirstName();
     }
 
     @Override
@@ -163,7 +168,7 @@ public class StudentTM implements Comparable<StudentTM>{
                 ", email='" + email + '\'' +
                 ", campusName='" + campusName + '\'' +
                 ", keymoney=" + keymoney +
-                ", acceptCondions=" + acceptCondions +
+                ", acceptConditions=" + acceptCondions +
                 ", createdDateTime=" + createdDateTime +
                 '}';
     }
@@ -171,6 +176,5 @@ public class StudentTM implements Comparable<StudentTM>{
     @Override
     public int compareTo(StudentTM o) {
         return studentId.compareTo(o.getStudentId());
-        //return 0;
     }
 }

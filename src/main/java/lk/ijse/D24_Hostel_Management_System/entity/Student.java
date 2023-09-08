@@ -171,4 +171,36 @@ public class Student {
                 ", createdDateTime=" + createdDateTime +
                 '}';
     }
+
+
+    public String getFirstName() {
+        if (nameIdentifier != null) {
+            return nameIdentifier.getFirstName();
+        } else {
+            return null; // or a default value if needed
+        }
+    }
+
+    public String getLastName() {
+        if (nameIdentifier != null) {
+            return nameIdentifier.getLastName();
+        } else {
+            return null; // or a default value if needed
+        }
+    }
+
+    public void setFirstName(String firstName) {
+        if (nameIdentifier == null) {
+            nameIdentifier = new NameIdentifier();
+        }
+        nameIdentifier.setFirstName(firstName);
+    }
+
+    public void setLastName(String lastName) {
+        if (nameIdentifier == null) {
+            nameIdentifier = new NameIdentifier();
+        }
+        nameIdentifier.setLastName(lastName);
+    }
+
 }

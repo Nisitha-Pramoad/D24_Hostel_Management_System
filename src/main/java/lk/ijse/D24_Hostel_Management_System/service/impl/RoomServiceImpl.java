@@ -41,21 +41,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public String updateRoom(RoomDto roomDto) {
-        Session session = SessionFactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        try {
-            roomRepository.setSession(session);
-            String isUpdateStudentId = roomRepository.update(roomDto.toEntity());
-            transaction.commit();
-            session.close();
-            return isUpdateStudentId;
-        } catch (Exception e) {
-            transaction.rollback();
-            session.close();
-            e.printStackTrace();
-            return null;
-        }
+    public boolean updateRoom(RoomDto roomDto) {
+        return false;
     }
 
     @Override
