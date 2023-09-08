@@ -26,7 +26,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public String saveStudent(Student student) {
+    public String save(Student student) {
         return (String) session.save(student);
     }
 

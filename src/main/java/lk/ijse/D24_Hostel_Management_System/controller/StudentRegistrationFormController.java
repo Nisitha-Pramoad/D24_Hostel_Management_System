@@ -197,11 +197,6 @@ public class StudentRegistrationFormController implements Initializable {
     }
 
     @FXML
-    void btnPhotoChooser(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnSearchAvailableOnAction(ActionEvent event) {
 
     }

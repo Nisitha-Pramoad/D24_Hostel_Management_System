@@ -83,11 +83,6 @@
                   <Font size="11.0" />
                </font></TextField>
             <Text fill="WHITE" layoutX="911.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money" />
-            <Button layoutX="1105.0" layoutY="272.0" mnemonicParsing="false" onAction="#btnPhotoChooser" prefHeight="26.0" prefWidth="148.0" style="-fx-background-color: #353747; -fx-background-radius: 10;" text="Choose Image" textFill="WHITE">
-               <font>
-                  <Font size="11.0" />
-               </font></Button>
-            <Text fill="WHITE" layoutX="1111.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Photo" />
             <CheckBox fx:id="chckbxTermsAndCondition" layoutX="51.0" layoutY="334.0" mnemonicParsing="false" text="Student have read and agree to the Hostel Terms and Conditions." textFill="WHITE" />
             <ImageView fx:id="imgStudentsDetailsPage" fitHeight="26.0" fitWidth="27.0" layoutX="512.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -1,19 +1,10 @@
-package lk.ijse.D24_Hostel_Management_System.entity;
+package lk.ijse.D24_Hostel_Management_System.dto;
 
-import org.hibernate.annotations.CreationTimestamp;
+import lk.ijse.D24_Hostel_Management_System.entity.Room;
+import lk.ijse.D24_Hostel_Management_System.entity.Student;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Timestamp;
+public class RoomDto {
 
-@Entity
-@Table(name = "room")
-public class Room {
-
-    @Id
-    @Column(name = "room_id", nullable = false, length = 50)
     private String roomId;
 
     private String roomType;
@@ -28,13 +19,7 @@ public class Room {
 
     private String roomStatus;
 
-    @CreationTimestamp
-    private Timestamp createdDateTime;
-
-    public Room() {
-    }
-
-    public Room(String roomId, String roomType, double pricing, double roomSize, int maximumOccupency, String armentiesAndFeatures, String roomStatus, Timestamp createdDateTime) {
+    public RoomDto(String roomId, String roomType, double pricing, double roomSize, int maximumOccupency, String armentiesAndFeatures, String roomStatus) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.pricing = pricing;
@@ -42,7 +27,9 @@ public class Room {
         this.maximumOccupency = maximumOccupency;
         this.armentiesAndFeatures = armentiesAndFeatures;
         this.roomStatus = roomStatus;
-        this.createdDateTime = createdDateTime;
+    }
+
+    public RoomDto() {
     }
 
     public String getRoomId() {
@@ -101,17 +88,9 @@ public class Room {
         this.roomStatus = roomStatus;
     }
 
-    public Timestamp getCreatedDateTime() {
-        return createdDateTime;
-    }
-
-    public void setCreatedDateTime(Timestamp createdDateTime) {
-        this.createdDateTime = createdDateTime;
-    }
-
     @Override
     public String toString() {
-        return "Room{" +
+        return "RoomDto{" +
                 "roomId='" + roomId + '\'' +
                 ", roomType='" + roomType + '\'' +
                 ", pricing=" + pricing +
@@ -119,7 +98,18 @@ public class Room {
                 ", maximumOccupency=" + maximumOccupency +
                 ", armentiesAndFeatures='" + armentiesAndFeatures + '\'' +
                 ", roomStatus='" + roomStatus + '\'' +
-                ", createdDateTime=" + createdDateTime +
                 '}';
+    }
+
+    public Room toEntity() {
+        Room room = new Room();
+        room.setRoomId(this.roomId);
+        room.setRoomType(this.roomType);
+        room.setPricing(this.pricing);
+        room.setRoomSize(this.roomSize);
+        room.setMaximumOccupency(this.maximumOccupency);
+        room.setArmentiesAndFeatures(this.armentiesAndFeatures);
+        room.setRoomStatus(this.roomStatus);
+        return room;
     }
 }

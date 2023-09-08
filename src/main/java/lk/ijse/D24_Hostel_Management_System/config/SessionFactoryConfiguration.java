@@ -1,5 +1,6 @@
 package lk.ijse.D24_Hostel_Management_System.config;
 
+import lk.ijse.D24_Hostel_Management_System.entity.Room;
 import lk.ijse.D24_Hostel_Management_System.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +16,7 @@ public class SessionFactoryConfiguration {
 
     private SessionFactoryConfiguration() {
         Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Student.class).addAnnotatedClass(Room.class);
 
         /** Configuration using property file */
         Properties property = new Properties();

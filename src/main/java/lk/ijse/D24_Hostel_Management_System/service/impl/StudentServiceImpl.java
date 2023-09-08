@@ -5,12 +5,8 @@ import lk.ijse.D24_Hostel_Management_System.dto.StudentDto;
 import lk.ijse.D24_Hostel_Management_System.repository.StudentRepository;
 import lk.ijse.D24_Hostel_Management_System.repository.impl.StudentRepositoryImpl;
 import lk.ijse.D24_Hostel_Management_System.service.StudentService;
-import lk.ijse.D24_Hostel_Management_System.tdm.StudentTM;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
-import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
     private static StudentServiceImpl studentService;
@@ -30,7 +26,7 @@ public class StudentServiceImpl implements StudentService {
         Transaction transaction = session.beginTransaction();
         try {
             studentRepository.setSession(session);
-            String isSavedStudentId = studentRepository.saveStudent(student.toEntity());
+            String isSavedStudentId = studentRepository.save(student.toEntity());
             transaction.commit();
             session.close();
             return isSavedStudentId;

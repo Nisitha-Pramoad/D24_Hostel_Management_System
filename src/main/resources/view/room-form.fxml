@@ -57,27 +57,23 @@
                </font>
             </TextField>
             <Text fill="WHITE" layoutX="981.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Size" />
-            <TextField fx:id="txtRoomDescription" layoutX="848.0" layoutY="189.0" prefHeight="24.0" prefWidth="405.0" promptText="description or additional details about the room">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
-            <Text fill="WHITE" layoutX="850.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Description" />
+            <Text fill="WHITE" layoutX="850.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Status" />
             <Button layoutX="860.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
             <Button layoutX="1000.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
             <Button layoutX="1137.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
             <TableView fx:id="tblRoomManagement" layoutX="51.0" layoutY="317.0" prefHeight="368.0" prefWidth="1203.0">
                <columns>
-                  <TableColumn prefWidth="167.0" text="RoomId" />
-                  <TableColumn prefWidth="149.0" text="Type" />
-                  <TableColumn prefWidth="162.99996948242188" text="Pricing" />
-                  <TableColumn prefWidth="164.00003051757812" text="Size" />
-                  <TableColumn prefWidth="169.33331298828125" text="MaximumOccupancy" />
-                  <TableColumn prefWidth="205.33331298828125" text="AmenitiesAndFeatures" />
-                  <TableColumn prefWidth="185.33331298828125" text="RoomDescription" />
+                  <TableColumn fx:id="colRoomId" prefWidth="167.0" text="RoomId" />
+                  <TableColumn fx:id="colRoomType" prefWidth="149.0" text="Type" />
+                  <TableColumn fx:id="colPricing" prefWidth="162.99996948242188" text="Pricing" />
+                  <TableColumn fx:id="colSize" prefWidth="164.00003051757812" text="Size" />
+                  <TableColumn fx:id="colMaximumOccupancy" prefWidth="169.33331298828125" text="MaximumOccupancy" />
+                  <TableColumn fx:id="colAmenitiesAndFeatures" prefWidth="205.33331298828125" text="AmenitiesAndFeatures" />
+                  <TableColumn fx:id="colRoomDescription" prefWidth="185.33331298828125" text="RoomDescription" />
                </columns>
             </TableView>
-            <ComboBox fx:id="cmbRoomType" layoutX="376.0" layoutY="126.0" prefHeight="24.0" prefWidth="212.0" promptText="Ac / Food" />
+            <ComboBox fx:id="cmbRoomType" layoutX="376.0" layoutY="126.0" prefHeight="24.0" prefWidth="212.0" promptText="select type" />
+            <ComboBox fx:id="cmbRoomStatus" layoutX="848.0" layoutY="189.0" prefHeight="24.0" prefWidth="212.0" promptText="select status" />
          </children>
       </Pane>
    </children>
