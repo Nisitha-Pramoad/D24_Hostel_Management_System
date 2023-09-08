@@ -89,9 +89,9 @@ public class RoomFormController implements Initializable {
         RoomDto roomDto = getRoom();
 
         RoomService roomService = new RoomServiceImpl().getInstance();
-        String isSavedRoomtId = roomService.saveRoom(roomDto);
+        String isSavedRoomId = roomService.saveRoom(roomDto);
 
-        if (isSavedRoomtId != null) {
+        if (isSavedRoomId != null) {
             new Alert(Alert.AlertType.CONFIRMATION, "Room saved successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to save room. Please try again.").show();
@@ -100,17 +100,30 @@ public class RoomFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        String roomId = txtRoomId.getText(); // Get the room ID to be deleted
 
+        RoomService roomService = new RoomServiceImpl().getInstance();
+
+        // Call the service method to delete the room
+        boolean isDeleted = roomService.deleteRoom(roomId);
+
+        if (isDeleted) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Room deleted successfully!").show();
+            //clearFields(); // Optionally, clear the input fields after deletion
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Failed to delete room. Please try again.").show();
+        }
     }
+
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         RoomDto roomDto = getRoom();
 
         RoomService roomService = new RoomServiceImpl().getInstance();
-        String isSavedRoomtId = roomService.updateRoom(roomDto);
+        String isUpdatRoomId = roomService.updateRoom(roomDto);
 
-        if (isSavedRoomtId != null) {
+        if (isUpdatRoomId != null) {
             new Alert(Alert.AlertType.CONFIRMATION, "Room updated successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to updated room. Please try again.").show();

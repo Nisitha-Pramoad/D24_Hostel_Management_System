@@ -9,6 +9,10 @@ public interface RoomService {
 
     String updateRoom(RoomDto roomDto);
 
+    boolean deleteRoom(String roomId);
+
+
+
 
     String getGenerateRoomId();
 }

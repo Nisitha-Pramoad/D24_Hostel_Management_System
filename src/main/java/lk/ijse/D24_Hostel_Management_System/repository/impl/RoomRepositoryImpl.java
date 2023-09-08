@@ -35,10 +35,21 @@ public class RoomRepositoryImpl implements RoomRepository {
         return (String) session.save(room);
     }
 
-    @Override
-    public void delete(Room entity) {
 
+    @Override
+    public boolean delete(Room room) {
+        try {
+            session.delete(room);
+            return true; // Deletion successful
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // Deletion failed
+        }
     }
+
+
+
+
 
 
 }

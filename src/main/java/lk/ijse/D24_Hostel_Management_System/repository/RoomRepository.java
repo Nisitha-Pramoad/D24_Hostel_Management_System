@@ -7,4 +7,7 @@ import org.hibernate.Session;
 public interface RoomRepository extends CrudRepository<Room, String>{
 
     void setSession(Session session);
+
+
+
 }

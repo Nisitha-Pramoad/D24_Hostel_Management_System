@@ -8,7 +8,8 @@ public interface CrudRepository<T, ID> {
     T findById(ID id);
     List<T> findAll();
     ID update(T entity);
-    void delete(T entity);
+    boolean delete(T entity);
+
 
 
 }
