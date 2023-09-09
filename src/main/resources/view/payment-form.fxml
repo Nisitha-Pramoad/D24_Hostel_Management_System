@@ -21,15 +21,15 @@
                   <Font name="Open Sans Bold" size="19.0" />
                </font>
             </Text>
-            <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgHome" fitHeight="36.0" fitWidth="36.0" layoutX="50.0" layoutY="28.0" onMouseClicked="#navigateToHome" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/images/icon-arrow-left-circle.png" />
                </image>
             </ImageView>
             <Pane layoutX="269.0" layoutY="101.0" prefHeight="71.0" prefWidth="796.0" style="-fx-background-color: #272A34; -fx-background-radius: 10;">
                <children>
-                  <Button layoutX="542.0" layoutY="23.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="189.0" style="-fx-background-color: #2380EA;" text="Available" textFill="WHITE" />
-                  <TextField layoutX="238.0" layoutY="25.0" prefHeight="24.0" prefWidth="276.0" promptText="Enter student-id or national id">
+                  <Button layoutX="542.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnAvailableOnAction" prefHeight="24.0" prefWidth="189.0" style="-fx-background-color: #2380EA;" text="Available" textFill="WHITE" />
+                  <TextField fx:id="txtSearchStudentId" layoutX="238.0" layoutY="25.0" prefHeight="24.0" prefWidth="276.0" promptText="Enter student-id or national id">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -41,21 +41,21 @@
                   </Text>
                </children>
             </Pane>
-            <TextField layoutX="54.0" layoutY="241.0" prefHeight="24.0" prefWidth="398.0" promptText="Student name">
+            <TextField fx:id="txtStudentName" layoutX="54.0" layoutY="241.0" prefHeight="24.0" prefWidth="398.0" promptText="Student name">
                <font>
                   <Font size="11.0" />
                </font>
             </TextField>
             <Text fill="WHITE" layoutX="55.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" />
-            <TextField layoutX="995.0" layoutY="242.0" prefHeight="24.0" prefWidth="252.0" promptText="Enter payment amount">
+            <TextField fx:id="txtAmount" layoutX="995.0" layoutY="242.0" prefHeight="24.0" prefWidth="252.0" promptText="Enter payment amount">
                <font>
                   <Font size="11.0" />
                </font>
             </TextField>
             <Text fill="WHITE" layoutX="995.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
-            <Button layoutX="816.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
-            <Button layoutX="977.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
-            <Button layoutX="1137.0" layoutY="297.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
+            <Button layoutX="816.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Delete" textFill="WHITE" />
+            <Button layoutX="977.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Update" textFill="WHITE" />
+            <Button layoutX="1137.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2380EA;" text="Save" textFill="WHITE" />
             <TableView layoutX="51.0" layoutY="389.0" prefHeight="296.0" prefWidth="1203.0">
                <columns>
                   <TableColumn prefWidth="131.0" text="C1" />
@@ -69,7 +69,7 @@
                   <TableColumn prefWidth="118.0" text="C2" />
                </columns>
             </TableView>
-            <ComboBox layoutX="575.0" layoutY="241.0" prefHeight="24.0" prefWidth="300.0" promptText="Auguest" />
+            <ComboBox fx:id="cmbAdress" layoutX="575.0" layoutY="241.0" prefHeight="24.0" prefWidth="300.0" promptText="Auguest" />
             <Text fill="WHITE" layoutX="578.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
          </children>
       </Pane>

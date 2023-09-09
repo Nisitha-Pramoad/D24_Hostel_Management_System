@@ -9,10 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,12 +20,35 @@ import lk.ijse.D24_Hostel_Management_System.service.RoomService;
 import lk.ijse.D24_Hostel_Management_System.service.StudentService;
 import lk.ijse.D24_Hostel_Management_System.service.impl.RoomServiceImpl;
 import lk.ijse.D24_Hostel_Management_System.service.impl.StudentServiceImpl;
+import lk.ijse.D24_Hostel_Management_System.tdm.RoomTM;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RoomFormController implements Initializable {
+
+    @FXML
+    private TableColumn<RoomTM, String> colAmenitiesAndFeatures;
+
+    @FXML
+    private TableColumn<RoomTM, String> colMaximumOccupancy;
+
+    @FXML
+    private TableColumn<RoomTM, String> colPricing;
+
+    @FXML
+    private TableColumn<RoomTM, String> colRoomStatus;
+
+    @FXML
+    private TableColumn<RoomTM, String> colRoomId;
+
+    @FXML
+    private TableColumn<RoomTM, String> colRoomType;
+
+    @FXML
+    private TableColumn<RoomTM, String> colSize;
 
     @FXML
     private ComboBox<String> cmbRoomType;
@@ -36,7 +57,7 @@ public class RoomFormController implements Initializable {
     private AnchorPane root;
 
     @FXML
-    private TableView<?> tblRoomManagement;
+    private TableView<RoomTM> tblRoomManagement;
 
     @FXML
     private TextField txtAmenitiesAndFeatures;
@@ -56,6 +77,12 @@ public class RoomFormController implements Initializable {
     @FXML
     private TextField txtRoomSize;
 
+    private final RoomService roomService;
+
+    public RoomFormController() {
+        roomService = RoomServiceImpl.getInstance();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> roomTypeList = FXCollections.observableArrayList(
@@ -71,6 +98,27 @@ public class RoomFormController implements Initializable {
                 "InActive"
         );
         cmbRoomStatus.setItems(roomStatusType);
+
+        colRoomId.setCellValueFactory(new PropertyValueFactory<>("roomId"));
+        colRoomType.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        colPricing.setCellValueFactory(new PropertyValueFactory<>("pricing"));
+        colSize.setCellValueFactory(new PropertyValueFactory<>("roomSize"));
+        colMaximumOccupancy.setCellValueFactory(new PropertyValueFactory<>("maximumOccupency"));
+        colAmenitiesAndFeatures.setCellValueFactory(new PropertyValueFactory<>("armentiesAndFeatures"));
+        colRoomStatus.setCellValueFactory(new PropertyValueFactory<>("roomStatus"));
+
+        tblRoomManagement.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtRoomId.setText(newValue.getRoomId());
+                cmbRoomType.setValue(newValue.getRoomType());
+                txtPrice.setText(Double.toString(newValue.getPricing()));
+                txtRoomSize.setText(Double.toString(newValue.getRoomSize()));
+                txtMaximumOccupency.setText(Integer.toString(newValue.getMaximumOccupency()));
+                txtAmenitiesAndFeatures.setText(newValue.getArmentiesAndFeatures());
+                cmbRoomStatus.setValue(newValue.getRoomStatus());
+            }
+        });
+        loadAllRooms();
     }
 
     @FXML
@@ -85,13 +133,36 @@ public class RoomFormController implements Initializable {
     }
 
     @FXML
+    void loadAllRooms() {
+        List<RoomDto> roomDtoList = roomService.getAllRooms();
+
+        ObservableList<RoomTM> roomTMObservableList = FXCollections.observableArrayList();
+
+        for (RoomDto roomDto : roomDtoList) {
+            RoomTM roomTM = new RoomTM(
+                    roomDto.getRoomId(),
+                    roomDto.getRoomType(),
+                    roomDto.getPricing(),
+                    roomDto.getRoomSize(),
+                    roomDto.getMaximumOccupency(),
+                    roomDto.getArmentiesAndFeatures(),
+                    roomDto.getRoomStatus()
+            );
+            roomTMObservableList.add(roomTM);
+        }
+
+        tblRoomManagement.setItems(roomTMObservableList);
+    }
+
+
+    @FXML
     void btnSaveOnAction(ActionEvent event) {
         RoomDto roomDto = getRoom();
 
-        RoomService roomService = new RoomServiceImpl().getInstance();
-        String isSavedRoomId = roomService.saveRoom(roomDto);
+        String savedRoomId = roomService.saveRoom(roomDto);
 
-        if (isSavedRoomId != null) {
+        if (savedRoomId != null) {
+            loadAllRooms();
             new Alert(Alert.AlertType.CONFIRMATION, "Room saved successfully!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to save room. Please try again.").show();
@@ -100,57 +171,45 @@ public class RoomFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-        String roomId = txtRoomId.getText(); // Get the room ID to be deleted
-
-        RoomService roomService = new RoomServiceImpl().getInstance();
-
-        // Call the service method to delete the room
-        boolean isDeleted = roomService.deleteRoom(roomId);
+        // Implement the delete action
+        String roomIdToDelete = txtRoomId.getText();
+        boolean isDeleted = roomService.deleteRoom(roomIdToDelete);
 
         if (isDeleted) {
+            loadAllRooms();
             new Alert(Alert.AlertType.CONFIRMATION, "Room deleted successfully!").show();
-            //clearFields(); // Optionally, clear the input fields after deletion
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to delete room. Please try again.").show();
         }
     }
 
-
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        // Implement the update action
         RoomDto roomDto = getRoom();
+        boolean isUpdated = roomService.updateRoom(roomDto);
 
-        RoomService roomService = new RoomServiceImpl().getInstance();
-        boolean isUpdatRoomId = roomService.updateRoom(roomDto);
-
-        if (isUpdatRoomId) {
+        if (isUpdated) {
+            loadAllRooms();
             new Alert(Alert.AlertType.CONFIRMATION, "Room updated successfully!").show();
-            //clearFields(); // Optionally, clear the input fields after deletion
         } else {
-            new Alert(Alert.AlertType.ERROR, "Failed to updated room. Please try again.").show();
+            new Alert(Alert.AlertType.ERROR, "Failed to update room. Please try again.").show();
         }
     }
 
-    public RoomDto getRoom(){
+    // Other methods
+
+    private RoomDto getRoom() {
         String roomId = txtRoomId.getText();
         String roomType = cmbRoomType.getValue();
         double roomPrice = Double.parseDouble(txtPrice.getText());
         double roomSize = Double.parseDouble(txtRoomSize.getText());
-        int maximumOccupency = Integer.parseInt(txtMaximumOccupency.getText());
-        String armentiesAndFeatures = txtAmenitiesAndFeatures.getText();
+        int maximumOccupancy = Integer.parseInt(txtMaximumOccupency.getText());
+        String amenitiesAndFeatures = txtAmenitiesAndFeatures.getText();
         String roomStatus = cmbRoomStatus.getValue();
 
-        RoomDto roomDto = new RoomDto();
-        roomDto.setRoomId(roomId);
-        roomDto.setRoomType(roomType);
-        roomDto.setPricing(roomPrice);
-        roomDto.setRoomSize(roomSize);
-        roomDto.setMaximumOccupency(maximumOccupency);
-        roomDto.setArmentiesAndFeatures(armentiesAndFeatures);
-        roomDto.setRoomStatus(roomStatus);
-
+        RoomDto roomDto = new RoomDto(roomId, roomType, roomPrice, roomSize, maximumOccupancy, amenitiesAndFeatures, roomStatus);
         return roomDto;
-
     }
 
 

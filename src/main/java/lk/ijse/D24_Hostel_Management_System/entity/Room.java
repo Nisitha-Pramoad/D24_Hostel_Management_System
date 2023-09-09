@@ -1,12 +1,20 @@
 package lk.ijse.D24_Hostel_Management_System.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@ToString
+
 
 @Entity
 @Table(name = "room")
@@ -22,104 +30,16 @@ public class Room {
 
     private double roomSize;
 
-    private int maximumOccupency;
+    private int maximumOccupancy; // Corrected the attribute name
 
-    private String armentiesAndFeatures;
+    private String amenitiesAndFeatures; // Corrected the attribute name
 
     private String roomStatus;
 
     @CreationTimestamp
     private Timestamp createdDateTime;
 
-    public Room() {
-    }
+    @OneToMany(mappedBy = "room")
+    private List<Reservation> reservations;
 
-    public Room(String roomId, String roomType, double pricing, double roomSize, int maximumOccupency, String armentiesAndFeatures, String roomStatus, Timestamp createdDateTime) {
-        this.roomId = roomId;
-        this.roomType = roomType;
-        this.pricing = pricing;
-        this.roomSize = roomSize;
-        this.maximumOccupency = maximumOccupency;
-        this.armentiesAndFeatures = armentiesAndFeatures;
-        this.roomStatus = roomStatus;
-        this.createdDateTime = createdDateTime;
-    }
-
-    public String getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public double getPricing() {
-        return pricing;
-    }
-
-    public void setPricing(double pricing) {
-        this.pricing = pricing;
-    }
-
-    public double getRoomSize() {
-        return roomSize;
-    }
-
-    public void setRoomSize(double roomSize) {
-        this.roomSize = roomSize;
-    }
-
-    public int getMaximumOccupency() {
-        return maximumOccupency;
-    }
-
-    public void setMaximumOccupency(int maximumOccupency) {
-        this.maximumOccupency = maximumOccupency;
-    }
-
-    public String getArmentiesAndFeatures() {
-        return armentiesAndFeatures;
-    }
-
-    public void setArmentiesAndFeatures(String armentiesAndFeatures) {
-        this.armentiesAndFeatures = armentiesAndFeatures;
-    }
-
-    public String getRoomStatus() {
-        return roomStatus;
-    }
-
-    public void setRoomStatus(String roomStatus) {
-        this.roomStatus = roomStatus;
-    }
-
-    public Timestamp getCreatedDateTime() {
-        return createdDateTime;
-    }
-
-    public void setCreatedDateTime(Timestamp createdDateTime) {
-        this.createdDateTime = createdDateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" +
-                "roomId='" + roomId + '\'' +
-                ", roomType='" + roomType + '\'' +
-                ", pricing=" + pricing +
-                ", roomSize=" + roomSize +
-                ", maximumOccupency=" + maximumOccupency +
-                ", armentiesAndFeatures='" + armentiesAndFeatures + '\'' +
-                ", roomStatus='" + roomStatus + '\'' +
-                ", createdDateTime=" + createdDateTime +
-                '}';
-    }
 }

@@ -1,9 +1,6 @@
-package lk.ijse.D24_Hostel_Management_System.dto;
+package lk.ijse.D24_Hostel_Management_System.tdm;
 
-import lk.ijse.D24_Hostel_Management_System.entity.Room;
-import lk.ijse.D24_Hostel_Management_System.entity.Student;
-
-public class RoomDto {
+public class RoomTM {
 
     private String roomId;
 
@@ -19,7 +16,10 @@ public class RoomDto {
 
     private String roomStatus;
 
-    public RoomDto(String roomId, String roomType, double pricing, double roomSize, int maximumOccupency, String armentiesAndFeatures, String roomStatus) {
+    public RoomTM() {
+    }
+
+    public RoomTM(String roomId, String roomType, double pricing, double roomSize, int maximumOccupency, String armentiesAndFeatures, String roomStatus) {
         this.roomId = roomId;
         this.roomType = roomType;
         this.pricing = pricing;
@@ -27,9 +27,6 @@ public class RoomDto {
         this.maximumOccupency = maximumOccupency;
         this.armentiesAndFeatures = armentiesAndFeatures;
         this.roomStatus = roomStatus;
-    }
-
-    public RoomDto() {
     }
 
     public String getRoomId() {
@@ -90,7 +87,7 @@ public class RoomDto {
 
     @Override
     public String toString() {
-        return "RoomDto{" +
+        return "RoomTM{" +
                 "roomId='" + roomId + '\'' +
                 ", roomType='" + roomType + '\'' +
                 ", pricing=" + pricing +
@@ -100,29 +97,4 @@ public class RoomDto {
                 ", roomStatus='" + roomStatus + '\'' +
                 '}';
     }
-
-    public Room toEntity() {
-        Room room = new Room();
-        room.setRoomId(this.roomId);
-        room.setRoomType(this.roomType);
-        room.setPricing(this.pricing);
-        room.setRoomSize(this.roomSize);
-        room.setMaximumOccupancy(this.maximumOccupency);
-        room.setAmenitiesAndFeatures(this.armentiesAndFeatures);
-        room.setRoomStatus(this.roomStatus);
-        return room;
-    }
-
-    public static RoomDto fromEntity(Room room) {
-        RoomDto roomDto = new RoomDto();
-        roomDto.setRoomId(room.getRoomId());
-        roomDto.setRoomType(room.getRoomType());
-        roomDto.setPricing(room.getPricing());
-        roomDto.setRoomSize(room.getRoomSize());
-        roomDto.setMaximumOccupency(room.getMaximumOccupancy());
-        roomDto.setArmentiesAndFeatures(room.getAmenitiesAndFeatures());
-        roomDto.setRoomStatus(room.getRoomStatus());
-        return roomDto;
-    }
-
 }

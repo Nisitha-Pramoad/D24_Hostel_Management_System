@@ -17,7 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.D24_Hostel_Management_System.dto.StudentDto;
 import lk.ijse.D24_Hostel_Management_System.embedded.NameIdentifier;
+import lk.ijse.D24_Hostel_Management_System.service.RoomService;
 import lk.ijse.D24_Hostel_Management_System.service.StudentService;
+import lk.ijse.D24_Hostel_Management_System.service.impl.RoomServiceImpl;
 import lk.ijse.D24_Hostel_Management_System.service.impl.StudentServiceImpl;
 import lk.ijse.D24_Hostel_Management_System.tdm.StudentTM;
 
@@ -92,7 +94,7 @@ public class StudentRegistrationFormController implements Initializable {
     private ImageView imgStudentsDetailsPage;
 
     @FXML
-    private ComboBox<?> roomType;
+    private ComboBox<String> roomType;
 
     @FXML
     private AnchorPane root;
@@ -124,6 +126,12 @@ public class StudentRegistrationFormController implements Initializable {
     @FXML
     private TextField txtStudentId;
 
+    private final RoomService roomService;
+
+    public StudentRegistrationFormController() {
+        roomService = RoomServiceImpl.getInstance();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ObservableList<String> genderTypeList = FXCollections.observableArrayList(
@@ -131,6 +139,14 @@ public class StudentRegistrationFormController implements Initializable {
                 "female"
         );
         cmbGender.setItems(genderTypeList);
+
+        ObservableList<String> roomTypeList = FXCollections.observableArrayList(
+                "Non-Ac",
+                "Non-Ac/Food",
+                "Ac",
+                "Ac/Food"
+        );
+        roomType.setItems(roomTypeList);
 
         Conditions.setCellValueFactory(new PropertyValueFactory<>("acceptConditions"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -178,7 +194,7 @@ public class StudentRegistrationFormController implements Initializable {
             tblStudents.setItems(observableStudentList);
 
             // Print the loaded students to the console
-            for (StudentDto student : studentList) {
+            /*for (StudentDto student : studentList) {
                 System.out.println("Student ID: " + student.getStudentId());
                 System.out.println("Name: " + student.getNameIdentifier().getFirstName() + " " + student.getNameIdentifier().getLastName());
                 System.out.println("Date of Birth: " + student.getDateOfBirth());
@@ -192,7 +208,7 @@ public class StudentRegistrationFormController implements Initializable {
                 System.out.println("Accepted Conditions: " + student.isAcceptCondions());
                 System.out.println("Created Date Time: " + student.getCreatedDateTime());
                 System.out.println("----------------------------------");
-            }
+            }*/
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to load students: " + e.getMessage()).show();
         }
@@ -243,17 +259,28 @@ public class StudentRegistrationFormController implements Initializable {
     @FXML
     void btnSaveOnAction(ActionEvent event) {
         StudentDto student = getStudent();
+        String roomTypeName = roomType.getValue();
+        LocalDate startDate = dtpkStartDate.getValue();
+        LocalDate endDate = dtpkEndDate.getValue();
 
-        StudentService studentService = new StudentServiceImpl().getInstance();
-        String isSavedStudentId = studentService.saveStudent(student);
+        // Check room availability
+        boolean isRoomAvailable = roomService.isRoomAvailable(roomTypeName, startDate, endDate);
 
-        if (isSavedStudentId != null) {
-            loadAllCustomers();
-            new Alert(Alert.AlertType.CONFIRMATION, "Student saved successfully!").show();
+        if (isRoomAvailable) {
+            StudentService studentService = new StudentServiceImpl().getInstance();
+            String isSavedStudentId = studentService.saveStudent(student);
+
+            if (isSavedStudentId != null) {
+                loadAllCustomers();
+                new Alert(Alert.AlertType.CONFIRMATION, "Student saved successfully!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to save student. Please try again.").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Failed to save student. Please try again.").show();
+            new Alert(Alert.AlertType.ERROR, "No available rooms for the selected date and room type.").show();
         }
     }
+
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
@@ -288,6 +315,20 @@ public class StudentRegistrationFormController implements Initializable {
     @FXML
     void btnSearchAvailableOnAction(ActionEvent event) {
         // Implement search logic here
+        String roomTypeName = roomType.getValue();
+        LocalDate startDate = dtpkStartDate.getValue();
+        LocalDate endDate = dtpkEndDate.getValue();
+
+        // Check room availability
+        boolean isRoomAvailable = roomService.isRoomAvailable(roomTypeName, startDate, endDate);
+        if (isRoomAvailable) {
+            // Show confirmation message for room availability
+            new Alert(Alert.AlertType.CONFIRMATION, "Room is available. Student can be registered.").show();
+        } else {
+            // Show error message for no available rooms
+            new Alert(Alert.AlertType.ERROR, "No available rooms for the selected date and room type.").show();
+        }
+
     }
 
     @FXML

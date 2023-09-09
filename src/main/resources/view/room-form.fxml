@@ -69,7 +69,7 @@
                   <TableColumn fx:id="colSize" prefWidth="164.00003051757812" text="Size" />
                   <TableColumn fx:id="colMaximumOccupancy" prefWidth="169.33331298828125" text="MaximumOccupancy" />
                   <TableColumn fx:id="colAmenitiesAndFeatures" prefWidth="205.33331298828125" text="AmenitiesAndFeatures" />
-                  <TableColumn fx:id="colRoomDescription" prefWidth="185.33331298828125" text="RoomDescription" />
+                  <TableColumn fx:id="colRoomStatus" prefWidth="185.33331298828125" text="RoomStatus" />
                </columns>
             </TableView>
             <ComboBox fx:id="cmbRoomType" layoutX="376.0" layoutY="126.0" prefHeight="24.0" prefWidth="212.0" promptText="select type" />
