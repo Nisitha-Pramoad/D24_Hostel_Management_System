@@ -193,22 +193,6 @@ public class StudentRegistrationFormController implements Initializable {
 
             tblStudents.setItems(observableStudentList);
 
-            // Print the loaded students to the console
-            /*for (StudentDto student : studentList) {
-                System.out.println("Student ID: " + student.getStudentId());
-                System.out.println("Name: " + student.getNameIdentifier().getFirstName() + " " + student.getNameIdentifier().getLastName());
-                System.out.println("Date of Birth: " + student.getDateOfBirth());
-                System.out.println("National ID: " + student.getNationalId());
-                System.out.println("Gender: " + student.getGender());
-                System.out.println("Address: " + student.getAddress());
-                System.out.println("Contact: " + student.getContact());
-                System.out.println("Email: " + student.getEmail());
-                System.out.println("Campus: " + student.getCampusName());
-                System.out.println("Key Money: " + student.getKeymoney());
-                System.out.println("Accepted Conditions: " + student.isAcceptCondions());
-                System.out.println("Created Date Time: " + student.getCreatedDateTime());
-                System.out.println("----------------------------------");
-            }*/
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to load students: " + e.getMessage()).show();
         }

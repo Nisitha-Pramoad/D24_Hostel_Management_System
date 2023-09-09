@@ -86,4 +86,12 @@ public class Student {
         nameIdentifier.setLastName(lastName);
     }
 
+    public String getFullName() {
+        if (nameIdentifier != null) {
+            return nameIdentifier.getFirstName() + " " + nameIdentifier.getLastName();
+        } else {
+            return null; // or a default value if needed
+        }
+    }
+
 }

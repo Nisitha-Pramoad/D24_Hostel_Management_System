@@ -27,6 +27,7 @@ public class Payment {
     private LocalDate paymentDate;
     private double amount;
     private String paymentMethod;
+    private String month;
 
     // Constructors, getters, setters...
 }

@@ -1,7 +1,13 @@
 package lk.ijse.D24_Hostel_Management_System.dto;
 
 import lk.ijse.D24_Hostel_Management_System.embedded.NameIdentifier;
+import lk.ijse.D24_Hostel_Management_System.entity.Payment;
+import lk.ijse.D24_Hostel_Management_System.entity.Reservation;
 import lk.ijse.D24_Hostel_Management_System.entity.Student;
+import lk.ijse.D24_Hostel_Management_System.tdm.PaymentHistoryTM;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class YourMapperClass {
     public static StudentDto mapToDto(Student student) {
@@ -54,4 +60,47 @@ public class YourMapperClass {
 
         return existingStudent;
     }
+
+    public static Payment mapToEntity(PaymentDto paymentDto) {
+        Payment payment = new Payment();
+        // Map the fields from paymentDto to payment entity here
+        payment.setAmount(paymentDto.getAmount());
+        payment.setPaymentDate(paymentDto.getPaymentDate());
+        // ... other mappings ...
+
+        return payment;
+    }
+
+    public static List<PaymentHistoryTM> mapToPaymentHistoryTMList(List<Payment> payments) {
+        List<PaymentHistoryTM> paymentHistoryTMs = new ArrayList<>();
+
+        for (Payment payment : payments) {
+            PaymentHistoryTM paymentHistoryTM = new PaymentHistoryTM();
+
+            // Assuming you have a Reservation property in Payment
+            Reservation reservation = payment.getReservation();
+
+            if (reservation != null) {
+                // Map fields from Payment entity to PaymentHistoryTM DTO
+                paymentHistoryTM.setPaymentHistoryId(payment.getPaymentId());
+
+                // Assuming Reservation has a Student property
+                Student student = reservation.getStudent();
+
+                if (student != null) {
+                    paymentHistoryTM.setStudentId(student.getStudentId());
+                    paymentHistoryTM.setStudentName(student.getFullName()); // Assuming you have a method to get the full name of the student
+                }
+
+                paymentHistoryTM.setPaymentDate(payment.getPaymentDate());
+                paymentHistoryTM.setAmount(payment.getAmount());
+                paymentHistoryTM.setPaymentMethod(payment.getPaymentMethod());
+            }
+
+            paymentHistoryTMs.add(paymentHistoryTM);
+        }
+
+        return paymentHistoryTMs;
+    }
+
 }

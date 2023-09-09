@@ -147,6 +147,13 @@ public class StudentDto {
         this.createdDateTime = createdDateTime;
     }
 
+    public String getFullName() {
+        if (nameIdentifier != null) {
+            return nameIdentifier.getFullName();
+        }
+        return ""; // Return an empty string or handle the case when nameIdentifier is null
+    }
+
     @Override
     public String toString() {
         return "StudentDto{" +

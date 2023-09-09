@@ -17,8 +17,8 @@ public class SessionFactoryConfiguration {
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(Student.class).
                 addAnnotatedClass(Room.class).
-                addAnnotatedClass(Reservation.class).
                 addAnnotatedClass(Payment.class).
+                addAnnotatedClass(Reservation.class).
                 addAnnotatedClass(PaymentHistory.class);
 
         /** Configuration using property file */
